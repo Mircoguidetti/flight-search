@@ -1,8 +1,8 @@
 const express = require('express');
-const configExpress = require('./app/config/express');
-const config = require('./app/config/index');
+const configExpress = require('./server/config/express');
+const config = require('./server/config/index');
 
-// config express 
+// config express
 const app = express();
 configExpress(app, config);
 

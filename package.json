@@ -4,16 +4,21 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "start": "node server.js",
+    "server": "nodemon server",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \" npm run server \" \" npm run client \""
   },
   "author": "Mirco Guidetti",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
     "ejs-mate": "^3.0.0",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "node-sass": "^4.11.0"
   },
   "devDependencies": {
+    "concurrently": "^4.1.0",
     "nodemon": "^1.18.9"
   }
 }

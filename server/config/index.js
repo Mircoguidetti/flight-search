@@ -10,7 +10,7 @@ const config = {
     'root': rootPath,
     'port': 5000,
     'serveStatics': path.join(rootPath, '/public'),
-    'keys': module.exports = require('./keys/dev')
+    'keys': require('./keys/dev')
 
   },
 
@@ -19,7 +19,7 @@ const config = {
     'root': rootPath,
     'port': process.env.PORT,
     'serveStatics': path.join(rootPath, '/public'),
-    'keys': module.exports = require('./keys/prod')
+    'keys': require('./keys/prod')
   }
 };
 

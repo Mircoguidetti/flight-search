@@ -1,4 +1,5 @@
 const path = require('path');
+const keys = require('./keys/index');
 
 const rootPath = path.join(__dirname, '../../');
 
@@ -10,7 +11,7 @@ const config = {
     'root': rootPath,
     'port': 5000,
     'serveStatics': path.join(rootPath, '/public'),
-    'keys': require('./keys/dev')
+    'keys': keys
 
   },
 
@@ -19,7 +20,7 @@ const config = {
     'root': rootPath,
     'port': process.env.PORT,
     'serveStatics': path.join(rootPath, '/public'),
-    'keys': require('./keys/prod')
+    'keys': keys
   }
 };
 

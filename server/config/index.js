@@ -18,6 +18,7 @@ const config = {
     'name': 'production',
     'root': rootPath,
     'port': process.env.PORT,
+    'serveStatics': path.join(rootPath, '/public'),
     'keys': module.exports = require('./keys/prod')
   }
 };

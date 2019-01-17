@@ -9,7 +9,9 @@ const config = {
     'name': 'development',
     'root': rootPath,
     'port': 5000,
+    'serveStatics': path.join(rootPath, '/public'),
     'keys': module.exports = require('./keys/dev')
+
   },
 
   'production': {

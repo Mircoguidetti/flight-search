@@ -1,0 +1,41 @@
+<% include ./layout %>
+
+<div>
+  <nav class="navbar">
+    <p class="navbar-brand">Find your flight</p>
+    <form action = "/api/flight" class="form-inline" method = "GET">
+      <input class="form-control mr-sm-2" aria-label="Large" type="text" name="from" placeholder="FROM (MXP)" required/>
+      <input class="form-control mr-sm-2" type="text" name="to" placeholder="TO (LGW)" required/>
+      <input class="form-control mr-sm-2" type="filght-date" name="date" placeholder="DATE (YYYY-MM-DD)" required/>
+      <button  class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </nav>
+  <% if (flight !== undefined || flight !== 'Not found') { %>
+    <div class="container">
+      <table class="table table-light">
+        <thead>
+          <tr>
+            <th cope="col">Airline</th>
+            <th scope="col">Origin</th>
+            <th scope="col">Destination</th>
+            <th scope="col">Date</th>
+            <th scope="col">Price ($)</th>
+          </tr>
+        </thead>
+      <tbody>
+        <tr>
+          <td><%= flight.airline %></td>
+          <td><%= flight.from %></td>
+          <td><%= flight.to %></td>
+          <td><%= flight.date %></td>
+          <td><%= flight.price %></td>
+        </tr>
+      </tbody>
+    </table>
+    <hr>
+  <% } %>
+  <% if (flight == 'Not found') { %>
+    <h1>Flight not found</h1>
+    <% } %>
+  </div>
+</div>

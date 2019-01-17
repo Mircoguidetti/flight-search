@@ -1,7 +1,4 @@
 #!/bin/bash
 
-npm i
-cd client
-npm i
-cd ..
+npm install
 npm run dev

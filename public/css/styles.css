@@ -11,6 +11,11 @@
 
 .navbar{
   padding-bottom: 2em;
+
+}
+
+.navbar{
+  background-color: lightgreen;
 }
 
 .form-control{
@@ -19,4 +24,15 @@
 
 .btn{
   font-size:1.5em;
+}
+.flight-list{
+
+}
+th, td{
+  font-size: 20px;
+  color: grey;
+}
+
+.table{
+  margin-top: 5%
 }

@@ -4,7 +4,7 @@ const { fetchFlight } = require('../flight-api');
 
 
 module.exports = (app) => {
-  app.get('/api/flight', (req, res) => {
+  app.get('/flight', (req, res) => {
     const { from, to, date} = req.query;
 
     if(from !== to ){

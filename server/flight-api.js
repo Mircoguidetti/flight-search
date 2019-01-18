@@ -8,7 +8,7 @@ const fetchFlight = async (origin, destination, date) => {
   try {
     return await axios.get(url, { headers: { "X-RapidAPI-Key": keys.rapidApiKey }})
   } catch (error) {
-    console.log(error);
+    return error
   }
 
 };

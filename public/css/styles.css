@@ -1,37 +1,21 @@
-.form-inline{
-  margin-right: 6em;
-  margin-top: 2em;
+hr{
+  margin-top: 3em;
 }
 
-.navbar-brand{
-  margin-left: 1em;
-  margin-top: 1em;
-  font-size: 2em;
-}
-
-.navbar{
-  padding-bottom: 4.5em;
-
-}
-
-.navbar{
-  background-color: lightblue;
-}
-
-.form-control{
-  padding: 2em
-}
-
-.btn{
-  font-size:2em;
-}
-.flight-list{
-
+td, th{
+  font-size: 1em;
+  color: black;
 }
 
 
-.table{
-  margin-top: 5%;
+.label-input{
+  width: 40px;
+  text-align: left;
+}
+
+.label-date{
+  width: 60px;
+  text-align: left;
 }
 
 .error-message {
@@ -41,11 +25,34 @@
   text-align: center;
 }
 
-hr{
-  margin-top: 3em;
+/*  Bootstrap classes */
+
+.form-inline{
+  margin-right: 6em;
+  margin-top: 2em;
 }
 
-td, th{
-  font-size: 1em;
-  color: black;
+.navbar-brand{
+  margin-left: 1em;
+  margin-top: 2em;
+  font-size: 2em;
+}
+
+.navbar{
+  padding-bottom: 4.5em;
+
+}
+
+.navbar{
+  background-color: #BAF7F7;
+}
+
+
+.btn{
+
+  margin-top: 23px;
+}
+
+.table{
+  margin-top: 5%;
 }

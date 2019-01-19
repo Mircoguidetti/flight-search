@@ -1,50 +1,60 @@
 const express = require('express');
 const { fetchFlight } = require('../flight-api');
-
-
+const moment  = require('moment');
 
 module.exports = (app) => {
   app.get('/flight', (req, res) => {
-    const { from, to, date} = req.query;
+    let { origin , destination, date } = req.query;
 
-    if(from !== to ){
+    console.log(origin + destination + date)
+    const findCheapestFlight = async () => {
+      // fetch flight
+      const flight = fetchFlight(origin , destination, date)
+      .then(response => {
+        // check fligth exist
+        if (response.data.Quotes.length > 0 ) {
 
-      const findCheapestFlight = async () => {
-        const flight = await fetchFlight(from, to, date);
-        if (flight.code === 'ENOTFOUND') {
-          req.flash('error', 'Please check your connection')
+          // get additional data from API
+          let airline = response.data.Carriers[0].Name;
+          let direct = response.data.Quotes[0].Direct;
+          let price = response.data.Quotes[0].MinPrice;
+
+          // adjust format for rendering
+          date = date.split('-').join('-');
+          origin  = origin.toUpperCase();
+          destination = destination.toUpperCase();
+
+          // pass context to template
+          const flightContext = {
+              airline,
+              origin ,
+              destination,
+              date,
+              direct,
+              price
+          }
+          res.render('index', {flightContext, moment})
+        }else{
+          req.flash('error', 'Flight not found')
           res.redirect('/')
         }
-        else if (flight && flight.status !== undefined) {
-          const airline = flight.data.Carriers;
-          const from = flight.data.Places[0].Name;
-          const to = flight.data.Places[1].Name;
-          const direct = flight.data.Quotes[0].Direct;
-          const priceQuotes = flight.data.Quotes;
-          const price = flight.data.Quotes[0].MinPrice;
+      })
+      .catch(error => {
 
-          const context = {
-              airline,
-              from,
-              to,
-              date,
-              priceQuotes,
-              price,
-              direct
-            };
-
-            res.render('index', {flight: context});
-
-          }else{
-            req.flash('error', 'Flight not found');
-            res.redirect('/');
-          }
+        // Handling network connection error
+        if (error.code === 'ENOTFOUND') {
+          req.flash('error', 'Please check your connection');
+          res.redirect('/')
+          return;
         }
-      findCheapestFlight();
 
-    }else{
-      req.flash('error', 'Origin and Destination can not be the same');
-      res.redirect('/');
+        // Handling  other error messages
+        const message = error.response.data.ValidationErrors[0].Message;
+        console.log(message)
+        req.flash('error', message);
+        res.redirect('/');
+      })
     }
+    findCheapestFlight();
   });
 };

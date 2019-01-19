@@ -4,10 +4,25 @@
   <nav class="navbar">
     <p class="navbar-brand">Find your cheapest flight</p>
     <form action = "/flight" class="form-inline" method = "GET">
-      <input class="form-control mr-sm-2" aria-label="Large" type="text" name="from" placeholder="FROM (MXP)" required/>
-      <input class="form-control mr-sm-2" type="text" name="to" placeholder="TO (LGW)" required/>
-      <input class="form-control mr-sm-2" type="date" name="date" placeholder="DATE (YYYY-MM-DD)" required />
-      <button  class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <div class="control">
+        <label class="label-input" for="origin">From</label>
+        <input class="form-control mr-sm-1" type="text" name="origin" placeholder="Airport code" required/>
+      </div>
+
+      <div class= "control">
+        <label class="label-input" for="destination">To</label>
+        <input class="form-control mr-sm-1" type="text" name="destination" placeholder="Airport code" required/>
+      </div>
+
+      <div class= "control">
+        <label class = "label-date" for="date">Depart</label>
+        <input class="form-control mr-sm-1" type="date" name="date" value="<%= moment().format('YYYY-MM-DD') %>" required />
+      </div>
+      <div class="control">
+        <button class="btn btn-outline-success ">
+          Search Flight
+        </button>
+      </div>
     </form>
   </nav>
   <% if(error && error.length > 0){ %>
@@ -18,8 +33,7 @@
 	   </div>
   <% } %>
 
-  <% if (flight !== undefined ) { %>
-    <% for(var i=0; i<flight.priceQuotes.length; i++) { %>
+  <% if (flightContext && flightContext !== undefined) { %>
       <div class="container">
         <table class="table table-light">
           <thead>
@@ -30,30 +44,26 @@
               <th scope="col">Date</th>
               <th scope="col">Price ($)</th>
               <th scope="col">Stops</th>
-
             </tr>
-
           </thead>
-
           <tbody>
             <tr>
-              <td><%= flight.airline[i].Name %></td>
-              <td><%= flight.from %></td>
-              <td><%= flight.to %></td>
-              <td><%= flight.date %></td>
-              <td><%= flight.priceQuotes[i].MinPrice.toFixed(2) %></td>
+              <td><%= flightContext.airline %></td>
+              <td><%= flightContext.origin %></td>
+              <td><%= flightContext.destination %></td>
+              <td><%= flightContext.date %></td>
+              <td><%= flightContext.price.toFixed(2) %></td>
 
-              <% if (flight.priceQuotes[i].Direct) { %>
+              <% if (flightContext.direct) { %>
                 <td>Direct</td>
               <% } else {%>
                 <td>1+ Stops</td>
               <% } %>
+
             </tr>
           </tbody>
         </table>
         <hr>
-
-      <% } %>
     <% } %>
   </div>
 </div>

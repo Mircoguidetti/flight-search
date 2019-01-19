@@ -8,15 +8,12 @@ const config  = require('./index');
 const { sessionSecret } = config.keys;
 
 
-
 module.exports = (app, config) => {
 
   app.set('views', path.join(config.root, '/server/views'));
 
   app.set('view engine', 'ejs');
   app.use(express.static(config.serveStatics));
-
-
 
   app.use(require('express-session')({
     secret: sessionSecret,

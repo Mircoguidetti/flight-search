@@ -3,7 +3,7 @@
 <div>
   <nav class="navbar">
     <p class="navbar-brand">Find your cheapest flight</p>
-    <form action = "/flight" class="form-inline" method = "GET">
+    <form action = "/flights" class="form-inline" method = "GET">
       <div class="control">
         <label class="label-input" for="origin">From</label>
         <input class="form-control mr-sm-1" type="text" name="origin" placeholder="Airport code" required/>
@@ -25,6 +25,7 @@
       </div>
     </form>
   </nav>
+
   <% if(error && error.length > 0){ %>
 	   <div class="container">
 		     <div class="alert alert-danger error-message" role="alert">
@@ -33,7 +34,7 @@
 	   </div>
   <% } %>
 
-  <% if (flightContext && flightContext !== undefined) { %>
+  <% if (flights && flights !== undefined) { %>
       <div class="container">
         <table class="table table-light">
           <thead>
@@ -42,28 +43,31 @@
               <th scope="col">Origin</th>
               <th scope="col">Destination</th>
               <th scope="col">Date</th>
-              <th scope="col">Price ($)</th>
+              <th scope="col">Price</th>
               <th scope="col">Stops</th>
             </tr>
           </thead>
           <tbody>
+          <% flights.forEach(flight => { %>
             <tr>
-              <td><%= flightContext.airline %></td>
-              <td><%= flightContext.origin %></td>
-              <td><%= flightContext.destination %></td>
-              <td><%= flightContext.date %></td>
-              <td><%= flightContext.price.toFixed(2) %></td>
-
-              <% if (flightContext.direct) { %>
+              <td><%= flight[0].airline %></td>
+              <td><%= flight[0].origin %></td>
+              <td><%= flight[0].destination %></td>
+              <td><%= flight[0].date %></td>
+              <td>$ <%= flight[0].price.toFixed(2) %></td>
+              <% if (flight[0].direct) { %>
                 <td>Direct</td>
               <% } else {%>
                 <td>1+ Stops</td>
               <% } %>
-
+              
             </tr>
+           
+          <% }) %>
           </tbody>
         </table>
         <hr>
     <% } %>
   </div>
+  
 </div>

@@ -2,8 +2,6 @@ const express = require('express');
 const configExpress = require('./server/config/express');
 const config = require('./server/config/index');
 
-
-
 // config express
 const app = express();
 configExpress(app, config);

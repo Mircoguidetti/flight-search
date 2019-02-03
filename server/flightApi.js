@@ -4,7 +4,6 @@ const { fetchAirportCodes } = require('./airportApi');
 const { formatFlightUrl } = require('./config/urls/flight');
 
 
-
 const fetchFlights = async (origin, destination, date) => {
   let flightUrls = [];
 
@@ -36,8 +35,8 @@ const fetchFlights = async (origin, destination, date) => {
         return flight.data.Quotes.map(quote => {
           
           return {
-            origin: flight.data.Places.find(place => place.PlaceId === quote.OutboundLeg.OriginId).Name,
-            destination: flight.data.Places.find(place => place.PlaceId === quote.OutboundLeg.DestinationId).Name,
+            origin: flight.data.Places.find(place => place.PlaceId === quote.OutboundLeg.OriginId).IataCode,
+            destination: flight.data.Places.find(place => place.PlaceId === quote.OutboundLeg.DestinationId).IataCode,
             airline: flight.data.Carriers.find(airline => airline.CarrierId === quote.OutboundLeg.CarrierIds[0]).Name,
             price: quote.MinPrice, 
             direct: quote.Direct,

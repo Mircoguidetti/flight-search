@@ -1,73 +1,50 @@
 <% include ./layout %>
 
-<div>
-  <nav class="navbar">
-    <p class="navbar-brand">Find your cheapest flight</p>
-    <form action = "/flights" class="form-inline" method = "GET">
-      <div class="control">
-        <label class="label-input" for="origin">From</label>
-        <input class="form-control mr-sm-1" type="text" name="origin" placeholder="Airport code" required/>
-      </div>
-
-      <div class= "control">
-        <label class="label-input" for="destination">To</label>
-        <input class="form-control mr-sm-1" type="text" name="destination" placeholder="Airport code" required/>
-      </div>
-
-      <div class= "control">
-        <label class = "label-date" for="date">Depart</label>
-        <input class="form-control mr-sm-1" type="date" name="date" value="<%= moment().format('YYYY-MM-DD') %>" required />
-      </div>
-      <div class="control">
-        <button class="btn btn-outline-success ">
-          Search Flight
-        </button>
-      </div>
-    </form>
-  </nav>
-
-  <% if(error && error.length > 0){ %>
-	   <div class="container">
-		     <div class="alert alert-danger error-message" role="alert">
-			        <%= error %>
-		     </div>
-	   </div>
-  <% } %>
-
-  <% if (flights && flights !== undefined) { %>
-      <div class="container">
-        <table class="table table-light">
-          <thead>
-            <tr>
-              <th cope="col">Airline</th>
-              <th scope="col">Origin</th>
-              <th scope="col">Destination</th>
-              <th scope="col">Date</th>
-              <th scope="col">Price</th>
-              <th scope="col">Stops</th>
-            </tr>
-          </thead>
-          <tbody>
-          <% flights.forEach(flight => { %>
-            <tr>
-              <td><%= flight[0].airline %></td>
-              <td><%= flight[0].origin %></td>
-              <td><%= flight[0].destination %></td>
-              <td><%= flight[0].date %></td>
-              <td>$ <%= flight[0].price.toFixed(2) %></td>
-              <% if (flight[0].direct) { %>
-                <td>Direct</td>
-              <% } else {%>
-                <td>1+ Stops</td>
-              <% } %>
-              
-            </tr>
-           
-          <% }) %>
-          </tbody>
-        </table>
-        <hr>
-    <% } %>
-  </div>
   
-</div>
+  <!-- Masthead -->
+  <header class="masthead text-white">
+    
+   
+       
+          <h1 class="mb-5">Find the cheapest flights around the world</h1>
+ 
+          <form class="form-inline" action="/flights" method="GET">
+            
+              <div class="control">
+                  <label class="label-input" for="origin">From</label>
+                  <input class="form-control " type="text" name="origin" placeholder="City or Airport" required/>
+              </div>
+              <div class="control">
+                  <label class="label-input" for="destination">To</label>
+                  <input class="form-control " type="text" name="destination" placeholder="City or Airport" required/>
+              </div>
+              <div class= "control">
+                  <label class = "label-date" for="date">Depart</label>
+                  <input class="form-control " type="date" name="date" value="<%= moment().format('YYYY-MM-DD') %>" required />
+              </div>
+              <div class="control ">
+                <button class=" btn-md btn ">
+                  Search Flights
+                </button>
+              </div>
+          </form>
+        </div>
+    
+   
+  </header>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+        <% if(error && error.length > 0){ %>
+          <div class="container">
+                <div class="alert alert-danger error-message" role="alert">
+                       <%= error %>
+                </div>
+          </div>
+      <% } %>
+    </div>
+ </footer>
+  
+
+  

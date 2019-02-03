@@ -21,13 +21,13 @@ module.exports =  (app) => {
         res.redirect('/');
 
       // Check flight not found
-      }else if (flights[0] < 1){
+      }else if (flights.length < 1){
         req.flash('error', 'Flight not found');
         res.redirect('/');
 
       // Render flights 
       }else{
-        res.render('index', {flights, moment});
+        res.render('flights', {flights, moment});
       }
 
     // Catch errors 

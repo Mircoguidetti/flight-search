@@ -31,4 +31,5 @@ module.exports = (app, config) => {
 
   require(path.join(config.root, '/server/controllers/flights'))(app);
   require(path.join(config.root, '/server/controllers/index'))(app);
+  
 };

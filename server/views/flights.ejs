@@ -1,0 +1,39 @@
+<% include ./layout %>
+  
+    <div class="container">
+      <table class="table table-light">
+        <thead>
+          <tr>
+            <th cope="col">Airline</th>
+            <th scope="col">Origin</th>
+            <th scope="col">Destination</th>
+            <th scope="col">Date</th>
+            <th scope="col">Price</th>
+            <th scope="col">Stops</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% flights.forEach(flight => { %>
+          <tr>
+            <td><%= flight[0].airline %></td>
+            <td><%= flight[0].origin %></td>
+            <td><%= flight[0].destination %></td>
+            <td><%= flight[0].date %></td>
+            <td>$ <%= flight[0].price.toFixed(2) %></td>
+            <% if (flight[0].direct) { %>
+              <td>Direct</td>
+            <% } else {%>
+              <td>1+ Stops</td>
+            <% } %>
+            
+          </tr>
+         
+        <% }) %>
+        </tbody>
+      </table>
+      
+      <hr>
+      <a href="../">Back to search</a>
+
+</div>
+

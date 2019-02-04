@@ -1,0 +1,82 @@
+body {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #ffffff; }
+
+h1,
+h2,
+h3,
+h5,
+h6 {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  color: #ffffff; }
+
+#sign-in-google {
+  color: #ff6666; }
+
+a {
+  color: #0099cc; }
+
+.label-input {
+  width: 50px;
+  text-align: left; }
+
+.label-date {
+  width: 60px;
+  text-align: left; }
+
+.error-message {
+  font-size: 1em;
+  text-align: center; }
+
+.form-control {
+  border-style: solid; }
+
+.btn {
+  background: #0099cc;
+  color: #ffffff; }
+
+.form-inline {
+  margin-left: 1em;
+  margin-top: 2em;
+  display: block; }
+
+@media (min-width: 45rem) {
+  .form-inline {
+    margin-left: 2em;
+    margin-top: 3em;
+    display: flex; } }
+
+@media (min-width: 45rem) {
+  .btn {
+    margin-top: 1.6em;
+    margin-left: 0.3em; } }
+
+header.masthead {
+  position: relative;
+  background: url("../../img/canoe.jpg") center;
+  background-size: cover;
+  padding-top: 4rem;
+  padding-bottom: 10rem; }
+
+header.masthead h1 {
+  font-size: 2rem;
+  margin-left: 1em;
+  margin-top: 0em; }
+
+footer.footer {
+  padding-top: 2rem; }
+
+.table {
+  margin-top: 2em; }
+
+.container {
+  padding-bottom: 3em; }
+
+.navbar-brand {
+  color: black; }
+
+@media (min-width: 45rem) {
+  .header.masthead h1 {
+    margin-left: 2em;
+    margin-top: 3em; } }

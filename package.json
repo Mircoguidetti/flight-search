@@ -4,9 +4,11 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "fix-memory-limit": "cross-env LIMIT=8048 increase-memory-limit",
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "server": "nodemon server.js",
+    "dev": "concurrently \"npm run server \" \" npm run watch-css \"",
+    "build-css": "node-sass --include-path scss public/scss/styles.scss public/css/styles.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
   },
   "engines": {
     "node": "11.6.0"
@@ -22,7 +24,9 @@
     "moment": "^2.23.0"
   },
   "devDependencies": {
+    "concurrently": "^4.1.0",
     "cross-env": "^5.2.0",
+    "node-sass": "^4.11.0",
     "nodemon": "^1.18.9"
   }
 }

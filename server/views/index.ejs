@@ -3,10 +3,10 @@
   
   <!-- Masthead -->
   <header class="masthead text-white">
-    
-   
+
+    <div class="container">
        
-          <h1 class="mb-5">Find the cheapest flights around the world</h1>
+          <h1>Find the cheapest flights around the world</h1>
  
           <form class="form-inline" action="/flights" method="GET">
             
@@ -22,30 +22,28 @@
                   <label class = "label-date" for="date">Depart</label>
                   <input class="form-control " type="date" name="date" value="<%= moment().format('YYYY-MM-DD') %>" required />
               </div>
-              <div class="control ">
-                <label class = "label-date" for="submit"></label>
-                <button class=" btn-md btn ">
-                  Search Flights
-                </button>
+              <div class="control">
+                  
+                <button type="submit" name="submit" class="btn btn-md"> Search flights</button>
               </div>
           </form>
         </div>
-    
+    </div>
    
   </header>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-        <% if(error && error.length > 0){ %>
-          <div class="container">
+  <% if(error && error.length > 0){ %>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="container">
                 <div class="alert alert-danger error-message" role="alert">
-                       <%= error %>
+                    <%= error %>
                 </div>
-          </div>
-      <% } %>
-    </div>
- </footer>
+            </div>
+        </div>
+    </footer>
+ <% } %>
   
 
   

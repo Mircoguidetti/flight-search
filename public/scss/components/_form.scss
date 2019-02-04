@@ -1,0 +1,52 @@
+.label-input{
+    width: 50px;
+    text-align: left;
+}
+  
+.label-date{
+    width: 60px;
+    text-align: left;
+    
+}
+  
+.error-message {
+    font-size: 1em;
+    text-align: center;
+}
+
+.form-control{
+   border-style: solid;
+}
+  
+.btn{
+    background: #0099cc;
+    color: #ffffff;
+}
+
+  
+.form-inline{
+   margin-left: 1em;
+   margin-top:2em;
+   display: block;
+
+   
+}
+
+
+@media (min-width: 45rem) {
+    .form-inline{
+        margin-left: 2em;
+        margin-top:3em;
+        display: flex
+    
+    }  
+}
+
+@media (min-width: 45rem) {
+    .btn{
+    margin-top:1.6em;
+    margin-left:0.3em;
+    
+    
+    }
+}

@@ -1,0 +1,48 @@
+header.masthead {
+    position: relative;
+    background: url("../../img/canoe.jpg") center;
+    background-size: cover;
+    padding-top: 4rem;
+    padding-bottom: 10rem;
+   
+    
+}
+  
+header.masthead h1 {
+    font-size: 2rem;
+    margin-left: 1em;
+    margin-top: 0em;
+    
+}
+  
+footer.footer {
+    padding-top: 2rem;
+  
+}
+
+.table{
+    margin-top:2em;
+}
+  
+.container{
+    padding-bottom: 3em;
+}
+
+.navbar-brand {
+    color: black;
+}
+  
+  
+@media (min-width: 45rem) {
+    .header.masthead h1{
+        margin-left: 2em;
+        margin-top:3em;
+    
+    }  
+}
+  
+  
+  
+  
+  
+  

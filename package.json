@@ -8,7 +8,8 @@
     "server": "nodemon server.js",
     "dev": "concurrently \"npm run server \" \" npm run watch-css \"",
     "build-css": "node-sass --include-path scss public/scss/styles.scss public/css/styles.css",
-    "watch-css": "nodemon -e scss -x \"npm run build-css\""
+    "watch-css": "nodemon -e scss -x \"npm run build-css\"",
+    "test": "mocha server/test/*.test.js"
   },
   "engines": {
     "node": "11.6.0"
@@ -30,6 +31,9 @@
     "passport-google-oauth20": "^1.0.0"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9"
+    "expect": "^24.1.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.9",
+    "supertest": "^3.4.2"
   }
 }

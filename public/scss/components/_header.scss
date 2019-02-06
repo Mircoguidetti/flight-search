@@ -1,6 +1,6 @@
 header.masthead {
     position: relative;
-    background: url('../../img/artem.jpg') center;
+    background: url('../../img/simon.jpg') center;
     background-size: cover;
     margin-top: 1.5rem;
     padding-top: 4rem;
@@ -25,9 +25,7 @@ footer.footer {
     margin-top:2em;
 }
 
-.container{
-    padding-bottom: 3em;
-}
+
 
 .navbar-brand {
     color: black;
@@ -35,7 +33,7 @@ footer.footer {
 
 #current-user {
     color: black;
-    margin-left: 1rem
+    margin-left: 2rem
 
 
 }
@@ -49,23 +47,23 @@ footer.footer {
 }
 
 #log-out {
-    margin-right: 1em;
+    margin-right: 0.4em;
 }
 
 
-@media (min-width: 44rem) {
-    .header.masthead h1{
-        margin-left: 2em;
-        margin-top:3em;
+@media (min-width: 45em) {
+    header.masthead {
+
 
     }
+
     #log-out {
         margin-right: 2em;
     }
 
     #current-user {
 
-        margin-left: 65rem
+        margin-left: 64rem
 
     }
 

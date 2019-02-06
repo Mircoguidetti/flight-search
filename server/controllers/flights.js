@@ -10,7 +10,7 @@ module.exports =  (app) => {
 
     try {
       const flights = await fetchFlights(origin, destination, date);
-      console.log(flights)
+  
       // Check validation errors
       if (flights.response){
         req.flash('error', flights.response.data.ValidationErrors[0].Message);
@@ -22,7 +22,7 @@ module.exports =  (app) => {
         res.redirect('/');
 
       // Check flight not found
-      }else if (flights.length < 1){
+    }else if (flights.length < 1 || flights.response === 404){
         req.flash('error', 'Flight not found');
         res.redirect('/');
 

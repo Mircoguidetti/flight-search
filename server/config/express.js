@@ -2,7 +2,6 @@ const express = require('express');
 const path = require('path');
 const engine = require('ejs');
 const flash = require('express-flash')
-const session = require('express-session');
 const cookieSession = require('cookie-session');
 const bodyParser = require('body-parser');
 const passport = require('passport');
@@ -20,7 +19,7 @@ module.exports = (app, config) => {
   app.use(express.static(config.serveStatics));
 
   app.use(bodyParser.json());
-  
+
   // Config cookie-session
   app.use(
     cookieSession({
@@ -36,8 +35,8 @@ module.exports = (app, config) => {
     res.locals.error = req.flash('error');
     res.locals.success = req.flash('success');
     next();
-  }); 
-  
+  });
+
   // Config passport
   app.use(passport.initialize());
   app.use(passport.session());

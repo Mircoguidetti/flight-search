@@ -11,46 +11,47 @@ const fetchFlights = async (origin, destination, date) => {
     // Fetch airports and convert city to airport codes
     const airports = await fetchAirportCodes(origin, destination);
 
-    // Check validation and connection errors 
-    if(airports.response || airports.code){
+    // Check validation and connection errors
+    if(airports.response || airports.code || airports.length < 1){
       return airports;
-    
+
     }else{
-      // Create airport urls 
+      // Create airport urls
       const flights = airports[0].map(origin => {
+
         let temp = origin.PlaceId;
-        
+
         return airports[1].filter(destination => {
           flightUrls.push(formatFlightUrl(origin = temp, destination = destination.PlaceId, date = date).url);
         });
       });
     }
-    
-    // Fetch all flights 
+
+    // Fetch all flights
     const [...flightRes] = await axios.all(flightUrls.map(url => axios.get(url, formatFlightUrl().headers)));
-    
-    // Create an array with flight objects 
-    const flights  = flightRes.map(flight => {    
-      
+
+    // Create an array with flight objects
+    const flights  = flightRes.map(flight => {
+
         return flight.data.Quotes.map(quote => {
-          
+
           return {
             origin: flight.data.Places.find(place => place.PlaceId === quote.OutboundLeg.OriginId).IataCode,
             destination: flight.data.Places.find(place => place.PlaceId === quote.OutboundLeg.DestinationId).IataCode,
             airline: flight.data.Carriers.find(airline => airline.CarrierId === quote.OutboundLeg.CarrierIds[0]).Name,
-            price: quote.MinPrice, 
+            price: quote.MinPrice,
             direct: quote.Direct,
             date: quote.OutboundLeg.DepartureDate.split('T')[0]
           };
 
         });
       }).filter(f => f.length);
-    
+
     return flights;
-    
+
   } catch (error) {
     return error;
-  }   
+  }
 };
 
 module.exports = { fetchFlights };

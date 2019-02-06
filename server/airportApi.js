@@ -7,18 +7,24 @@ const fetchAirportCodes = async (origin, destination) => {
 
   try {
     const [ ...airportRes ] = await axios.all(urls.map(url => axios.get(url, formatAirportUrl().headers)));
-    
-    const airportCodes = airportRes.map(airports => {
-      let temp = airports.data.Places[0].CityId;
 
-      const airport = airports.data.Places.filter(airport => {
+    if(airportRes[0].data.Places.length > 0  && airportRes[1].data.Places.length > 0 ) {
 
-        return airport.CityId === temp && airport.PlaceId !== temp;
-      })
-      return airport;
-    });
+      const airportCodes = airportRes.map(airports => {
+        let temp = airports.data.Places[0].CityId;
 
-    return airportCodes;
+        const airport = airports.data.Places.filter(airport => {
+          return airport.CityId === temp && airport.PlaceId !== temp;
+        })
+        return airport;
+      });
+
+      return airportCodes
+    }else{
+      return []
+    }
+
+    ;
 
   } catch (error) {
     return error;

@@ -7,17 +7,26 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title> Flight Search </title>
   </head>
   <body>
       <!-- Navigation -->
-  <nav class="navbar static-top">
-     
+  <nav class="navbar static-top navbar-responsive">
+
+
         <a class="navbar-brand" href="#">Flight Search</a>
-        <a id="sign-in-google" href="#">Sign in with Google</a>
-    
+
+
+        <% if (currentUser) { %>
+          <h7 id="current-user"> <%= currentUser.displayName %> </h7>
+          <a id="log-out" href="/logout">Logout</a>
+
+        <% } else { %>
+          <a id="sign-in-google" href="/auth/google">Sign in with Google</a>
+        <% } %>
+
     </nav>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133880132-1"></script>

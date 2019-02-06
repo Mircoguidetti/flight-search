@@ -1,29 +1,30 @@
 header.masthead {
     position: relative;
-    background: url('../../img/canoe.jpg') center;
+    background: url('../../img/artem.jpg') center;
     background-size: cover;
+    margin-top: 1.5rem;
     padding-top: 4rem;
     padding-bottom: 10rem;
-   
-    
+
+
 }
-  
+
 header.masthead h1 {
     font-size: 2rem;
     margin-left: 1em;
     margin-top: 0em;
-    
+
 }
-  
+
 footer.footer {
     padding-top: 2rem;
-  
+
 }
 
 .table{
     margin-top:2em;
 }
-  
+
 .container{
     padding-bottom: 3em;
 }
@@ -31,18 +32,45 @@ footer.footer {
 .navbar-brand {
     color: black;
 }
-  
-  
-@media (min-width: 45rem) {
+
+#current-user {
+    color: black;
+    margin-left: 1rem
+
+
+}
+.navbar{
+  display: flex
+}
+
+#sign-in-google{
+    color: #ff6666;
+    text-align: right;
+}
+
+#log-out {
+    margin-right: 1em;
+}
+
+
+@media (min-width: 44rem) {
     .header.masthead h1{
         margin-left: 2em;
         margin-top:3em;
-    
-    }  
+
+    }
+    #log-out {
+        margin-right: 2em;
+    }
+
+    #current-user {
+
+        margin-left: 65rem
+
+    }
+
+    .navbar{
+      display: flex;
+    }
+
 }
-  
-  
-  
-  
-  
-  

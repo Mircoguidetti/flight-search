@@ -19,7 +19,7 @@ cd flight-search
 ./start.sh
 ```
 
-### 2. Setup the database service
+## Setup the database service
 
 If you want to specifically run the app locally here are the steps: (Assuming you are going to have MongoDB installed you need to run these commands to open a connection with the database locally)
 

@@ -5,10 +5,13 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const { googleClientSecret, googleClientID } = require('../config/index').keys;
 const User = require('../models/user');
 
+
+// Serialize user
 passport.serializeUser((user, done) => {
     done(null, user.id);
   });
-  
+
+// Deserialize user
 passport.deserializeUser((id, done) => {
     User.findById(id).then(user => {
         done(null, user);

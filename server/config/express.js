@@ -1,14 +1,11 @@
 const express = require('express');
 const path = require('path');
 const engine = require('ejs');
-const flash = require('express-flash')
+const flash = require('express-flash');
 const cookieSession = require('cookie-session');
-const bodyParser = require('body-parser');
 const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const mongoose = require('../db/mongoose');
-const { sessionSecret, cookieKey } = require('./index').keys;
-
+const { cookieKey } = require('./index').keys;
 
 
 module.exports = (app, config) => {
@@ -18,7 +15,6 @@ module.exports = (app, config) => {
   app.set('view engine', 'ejs');
   app.use(express.static(config.serveStatics));
 
-  app.use(bodyParser.json());
 
   // Config cookie-session
   app.use(
@@ -40,10 +36,11 @@ module.exports = (app, config) => {
   // Config passport
   app.use(passport.initialize());
   app.use(passport.session());
-
-  // Config controllers
-  require(path.join(config.root, '/server/controllers/flights'))(app);
-  require(path.join(config.root, '/server/controllers/index'))(app);
-  require(path.join(config.root, '/server/controllers/googleAuth'))(app);
   require(path.join(config.root, '/server/services/passport'));
+
+  // Require routes 
+  require(path.join(config.root, '/server/routes/flights'))(app);
+  require(path.join(config.root, '/server/routes/index'))(app);
+  require(path.join(config.root, '/server/routes/googleAuth'))(app);
+
 };
